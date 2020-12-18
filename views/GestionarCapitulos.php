@@ -13,7 +13,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Gestionar Capítulos</title>
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
@@ -117,7 +117,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     <script type="text/javascript" src="../librerias/datatables/datatables.min.js"></script>    
     <script type="text/javascript" src="../assets/js/main.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="../assets/js/sweetAlert.js"></script>
+    
 </body>
 
 </html>
