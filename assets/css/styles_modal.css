@@ -1,0 +1,95 @@
+.modal-title{
+    font-family: 'Dosis', sans-serif; 
+    font-size:25px;
+    margin: auto;
+  }
+  
+  .modal-header{
+    width: 450px;
+    height:80px;
+    text-align:center;
+    background: #007bff;
+    color: #fff;
+    
+  }
+  
+.input-group{
+    width: 100%;
+}
+
+.previsualizar{
+    width: 180px;
+    height: 180px ;
+}
+  
+  .modal-dialog{
+    box-shadow: 0 0 9px 0 rgb(57, 152, 255);
+  }
+  
+  button.close{
+    color: #fff;
+    opacity: .5;
+  }
+  
+  button.close:hover{
+    color: #fff;
+    opacity: .8;
+  }
+  
+  label{
+    font-size: 15.3px;
+    font-weight: 1000;
+  }
+  
+  
+  
+  
+  
+  
+  .div1 {
+    overflow:scroll;
+       height:400px;
+       width:100%; 
+  }
+  
+ 
+  
+ 
+  
+  h1{
+    font-family: 'Dosis', sans-serif;    
+  }
+  
+  .content-header{
+    font-size: 50px;
+  }
+  
+ 
+  h1 {
+    margin: 0;
+}
+
+  
+  .form-group p{
+    color: #595e63;
+    font-size: 15px;
+    
+  }
+  
+  em{
+    font-style: normal;
+  }
+  
+  .div2 { 
+    overflow:scroll;
+       height:590px;
+       width:102%; 
+       
+  }
+  .input2{
+      width: 205%;
+  }
+  .buttonCrud{
+      border: none;
+      background: none;
+  }

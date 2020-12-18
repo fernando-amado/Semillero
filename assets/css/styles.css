@@ -1,0 +1,44 @@
+html{
+    min-height: 100%;
+    position: relative;
+}
+body{
+    padding: 0%;
+    margin-right:0%;
+    overflow-X:hidden;
+}
+#BotonGestioCap{
+    margin-right: 10px;
+}
+#BotonGestionInd{
+    margin-right: 100px;
+}
+footer {
+    position: absolute;
+    width:100%; 
+    bottom: 0;
+ margin: none;
+ }
+ #iagregar{
+     font-size: 40px;
+     color:#007bff;
+ }
+ #ieditar{
+    font-size: 25px;
+    color:#ff9900;
+}
+#iborrar{
+    font-size: 25px;
+    color:red;
+}
+.content{
+    margin-bottom:10%;
+    width: 100%;
+}
+
+.buttonConfirmacion{
+    background: none;
+    border: none;
+    color: #ffffff;
+}
+

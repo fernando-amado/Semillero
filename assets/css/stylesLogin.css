@@ -1,0 +1,12 @@
+.contenedor{
+    margin-top: 8%;
+}
+.formulario{
+    margin: 25px 40% 0px;
+}
+h1{
+ margin-bottom: 50px;
+}
+.incorrecta{
+    color: red;
+}
