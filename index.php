@@ -35,40 +35,42 @@
     ?>
     <div class="content">
     <div class="card" style="width: 80rem;">
-      <div class="accordion" id="accordionExample">
-        <?php foreach($data as $dat) { 
+    <?php foreach($data as $dat) { 
            $consulta1 = "SELECT*FROM indices WHERE numero_ind LIKE '".$dat['numero_cap']."%'";
            $resultado1 = $conexion->prepare($consulta1);
            $resultado1->execute();
            $data1=$resultado1->fetchAll(PDO::FETCH_ASSOC);
           ?>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button onclick="consultar(<?php echo $dat['id_capitulo'];?>)" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $dat['id_capitulo']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $dat['id_capitulo']; ?>">
-                <?php echo 'Capitulo ', $dat['numero_cap']; ?>
-              </button>
-            </h2>
-            <div id="collapse<?php echo $dat['id_capitulo']; ?>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="card-body">
-                  <h5 class="card-title"><?php echo $dat['nombre_cap']; ?></h5><hr>
-                  <?php
-                      foreach($data1 as $dat1){
-                  ?>
-                  <h6 class="card-subtitle mb-2 text-muted"><?php echo $dat1['numero_ind'].")".$dat1['nombre_ind']; ?></h6>
-                  <p class="card-text"><?php echo $dat1['descripcion_ind']; ?></p>
-                  <?php
-                      }
-                  ?>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php } ?>
-      </div>
+   <details>
+     <summary><?php echo 'Capítulo ', $dat['numero_cap']; ?> </summary>
+     <h3 class="nombreCap"><?php echo $dat['nombre_cap']; ?></h3><br>
+     <h4>Tabla de contenido del capítulo</h4>
+     
+     <div class="tablaContenido">
+       <ul>
+       <?php
+       foreach($data1 as $dat1){
+      ?>
+         <li><a href="#<?php echo $dat1['nombre_ind']; ?>"><?php echo $dat1['nombre_ind']; ?>........<?php echo $dat1['numero_ind']; ?></a></li>
+         <?php
+       }
+      ?>
+        </ul>
+     </div>
+     
+     <hr>
+     <?php
+       foreach($data1 as $dat1){
+      ?>
+      <h5 class="contenidoCap" id="<?php echo $dat1['nombre_ind']?>"><?php echo $dat1['numero_ind']; ?>) <?php echo $dat1['nombre_ind']; ?></h5>
+      <p class="contenidoCap"><?php echo $dat1['descripcion_ind']; ?></p>
+      <?php
+       }
+      ?>
 
+   </details>
+   <?php }
+          ?>
   </center>
 
   </div>
