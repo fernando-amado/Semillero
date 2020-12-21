@@ -61,8 +61,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <td><?php echo $dat['numero_ind'] ?></td>
             <td><?php echo $dat['nombre_ind'] ?></td>
             <td><?php echo $dat['descripcion_ind'] ?></td>
-            <td>
-            </td>
+            
+            <td></td>
           </tr>
         <?php } ?>
       </tbody>
@@ -94,7 +94,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>  
                 <div class="form-group">
                 <label for="numero_ind" class="col-form-label">Numero Indices:</label>
-                <input type="number" class="form-control" id="numero_ind">
+                <input type="text" class="form-control" id="numero_ind">
                 </div>  
                 <div class="form-group">
                 <label for="nombre_ind" class="col-form-label">Nombre Indices:</label>
