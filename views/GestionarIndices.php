@@ -5,7 +5,7 @@ include_once '../bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT id_indices, id_capitulo, nombre_ind, numero_ind, descripcion_ind FROM indices";
+$consulta = "SELECT id_indices, id_capitulo, numero_ind, nombre_ind, descripcion_ind FROM indices";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -13,7 +13,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestionar Ìndices</title>
+  <title>Gestionar Índices</title>
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
@@ -28,14 +28,13 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-
-  <?php
-  include_once 'Header.php'
+  <?php 
+  include 'header.php'
   ?>
-
+<div class="content">
   <div class="container">
     <div class="Title d-flex justify-content-between">
-      <h3 class="Titulopag">ÍNDICES</h3>
+      <h3 class="Titulopag">Índices</h3>
       <button class="buttonCrud" id="btnNuevo"  type="button" data-toggle="modal"> <i class="fas fa-plus-square" id="iagregar"></i> </button>
     </div>
 
@@ -45,9 +44,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Capitulo</th>
-          <th scope="col">Nombre índice</th>
-          <th scope="col">Numero índice</th>
-          <th scope="col">Descripción índice</th>
+          <th scope="col">Numero del Índice</th>
+          <th scope="col">Nombre del Índice</th>
+          <th scope="col">Descripción</th>
           <th scope="col">Acción</th>
         </tr>
       </thead>
@@ -59,8 +58,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
           <tr>
             <th scope="row"><?php echo $dat['id_indices'] ?></th>
             <td><?php echo $dat['id_capitulo'] ?></td>
-            <td><?php echo $dat['nombre_ind'] ?></td>
             <td><?php echo $dat['numero_ind'] ?></td>
+            <td><?php echo $dat['nombre_ind'] ?></td>
             <td><?php echo $dat['descripcion_ind'] ?></td>
             <td>
             </td>
@@ -73,7 +72,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
   <?php
   include_once 'footer.php';
   ?>
-
+</div>
 
  <!--Modal para CRUD-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,25 +83,28 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formIndices">    
+        <form id="formIndices" action="#">    
             <div class="modal-body">
                
+            
+
                 <div class="form-group">
-                <label for="id_capitulo" class="col-form-label">Nombre del Capitulo</label>
+                <label for="id_capitulo" class="col-form-label">Capitulo:</label>
                 <input type="text" class="form-control" id="id_capitulo">
                 </div>  
                 <div class="form-group">
-                <label for="nombre_ind" class="col-form-label">Nombre Índice:</label>
-                <input type="text" class="form-control" id="nombre_ind">
-                </div>   
-                <div class="form-group">
-                <label for="numero_ind" class="col-form-label">Numero Índice:</label>
+                <label for="numero_ind" class="col-form-label">Numero Indices:</label>
                 <input type="number" class="form-control" id="numero_ind">
-                </div>
+                </div>  
                 <div class="form-group">
-                <label for="descripcion_ind" class="col-form-label">Descripción Índice:</label>
+                <label for="nombre_ind" class="col-form-label">Nombre Indices:</label>
+                <input type="text" class="form-control" id="nombre_ind">
+                </div>  
+                <div class="form-group">
+                <label for="descripcion_ind" class="col-form-label">Descripcion Indices:</label>
                 <input type="text" class="form-control" id="descripcion_ind">
-                </div>                        
+                </div>  
+                                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -125,6 +127,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
   <!-- datatables JS -->
     <script type="text/javascript" src="../librerias/datatables/datatables.min.js"></script>    
     <script type="text/javascript" src="../assets/js/maini.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>
