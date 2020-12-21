@@ -41,4 +41,52 @@ footer {
     border: none;
     color: #ffffff;
 }
+.nombreCap{
+    margin-top: 20px;
+}
+hr {
+    margin: 20px;
+}
 
+summary{
+    padding: 1em;
+    transition: background-color .3s;
+    border: rgba(0, 0, 0, 0.13) .12em solid;
+    outline: none;
+    text-align: left;
+}
+summary:hover{
+    background:rgb(231, 231, 231);
+    border: rgb(231, 231, 231 ) 1px solid;
+}
+details[open] summary ~*{
+    animation: sweep .5s ease-in-out;
+}
+@keyframes sweep {
+    from {
+        opacity: 0; 
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.contenidoCap{
+    text-align: left ;
+    margin-left: 20px;
+}
+.tablaContenido{
+    padding: 10px;
+    padding-bottom: 5px;
+    margin: 30px;
+    text-align: left;
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+}
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
