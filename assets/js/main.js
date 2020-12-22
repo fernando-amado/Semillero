@@ -121,7 +121,7 @@ const expresiones = {
 	
 	tituloCapitulo: /^[a-zA-ZÀ-ÿ\s]{1,1000}$/, // Letras y espacios, pueden llevar acentos.
 	
-	numeroCapitulo: /^[.\d]{1,14}$/ // numeros.
+	numeroCapitulo: /^{1,14}$/ // numeros.
 }
 const campos = {
 	numeroCapitulo: false,
