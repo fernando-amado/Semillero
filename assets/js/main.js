@@ -112,53 +112,107 @@ validacionBorrar=$(document).on("click", ".btnBorrar", function(){
    
     
 
+//VALIDACIONES FORMULARIOS
+
+const formulario = document.getElementById('formCapitulos');
+const inputs = document.querySelectorAll('#formCapitulos input');
+
+const expresiones = {
+	
+	tituloCapitulo: /^[a-zA-ZÀ-ÿ\s]{1,1000}$/, // Letras y espacios, pueden llevar acentos.
+	
+	numeroCapitulo: /^[.\d]{1,14}$/ // numeros.
+}
+const campos = {
+	numeroCapitulo: false,
+	tituloCapitulo: false
+	
+}
+
+const validarFormulario = (e) => {
+	switch (e.target.name) {
+		case "numeroCapitulo":
+			validarCampo(expresiones.numeroCapitulo, e.target,'numeroCapitulo');
+		break;
+		case "tituloCapitulo":
+			validarCampo(expresiones.tituloCapitulo, e.target, 'tituloCapitulo');
+		break;
+		
+	}
+}
+const validarCampo = (expresion, input, campo) => {
+	if(expresion.test(input.value)){
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+		campos[campo] = false;
+	}
+}
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
 
 
-    
-validacion=$("#formCapitulos").submit(function(e){
+$("#formCapitulos").submit(function(e){
 
-     
-    
-    tituloCapitulo = $.trim($("#tituloCapitulo").val());
-    numeroCapitulo = $.trim($("#numeroCapitulo").val());  
-     $.ajax({
-        url: "../bd/crud.php",
-        type: "POST",
-        dataType: "json",
-        data: {tituloCapitulo:tituloCapitulo, numeroCapitulo:numeroCapitulo,  id:id, opcion:opcion},
-        success: function(data){  
-            console.log(data);
-            id = data[0].id;            
-            tituloCapitulo = data[0].tituloCapitulo;
-            numeroCapitulo = data[0].numeroCapitulo;
-            if(opcion == 1){tablaPersonas.row.add([id,tituloCapitulo,numeroCapitulo]).draw();
-                  
-            }
-            else{tablaPersonas.row(fila).data([id,tituloCapitulo,numeroCapitulo]).draw();        
-            
-            }            
-        } 
-    });
-    
-    
-    
-    if(validacion!=null){
+    const terminos = document.getElementById('terminos');
+	if(campos.tituloCapitulo && campos.numeroCapitulo  ){
+		
+        tituloCapitulo = $.trim($("#tituloCapitulo").val());
+        numeroCapitulo = $.trim($("#numeroCapitulo").val());  
+         $.ajax({
+            url: "../bd/crud.php",
+            type: "POST",
+            dataType: "json",
+            data: {tituloCapitulo:tituloCapitulo, numeroCapitulo:numeroCapitulo,  id:id, opcion:opcion},
+            success: function(data){  
+                console.log(data);
+                id = data[0].id;            
+                tituloCapitulo = data[0].tituloCapitulo;
+                numeroCapitulo = data[0].numeroCapitulo;
+                if(opcion == 1){tablaPersonas.row.add([id,tituloCapitulo,numeroCapitulo]).draw();
+                      
+                }
+                else{tablaPersonas.row(fila).data([id,tituloCapitulo,numeroCapitulo]).draw();        
+                
+                }            
+            } 
+        });
         Swal.fire({
             icon: "success",
-            title: "¡El usuario ha sido guardado correctamente!",     
+            title: "¡El capitulo ha sido guardado correctamente!",     
             showConfirmButton: false,   
             html: '<a href="../views/GestionarCapitulos.php"><button  class="btn btn-primary">Aceptar</button><a/>',
             allowOutsideClick: false
         })
-        e.preventDefault();  
-    }
-    else{
-        alert("mal");
-    }
+        e.preventDefault(); 
+		
+	}
+
+   
+    
+    
+    
+    else {
+		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+	}
     
 
    
 });    
+    
+
 
     
 });
