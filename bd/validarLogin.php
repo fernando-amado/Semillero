@@ -11,14 +11,14 @@ if (isset($_POST['boton'])) {
     $contrasena = $_POST['contrasena'];
     $_SESSION['correo']=$_POST['correo'];
 
-    $conexion = mysqli_connect("localhost","root","","semilleroprueba");
+    $conexion = mysqli_connect("localhost","root","","semillero");
     $consulta = "SELECT * FROM usuarios  WHERE correo ='$correo' AND contrasena='$contrasena'";
     $resultado = mysqli_query($conexion, $consulta);
 
 $filas = mysqli_num_rows($resultado);
 
  if ($filas>0) {
-   header("location:GestionarCapitulos.php");
+   header("location:inicio.php");
  }else{
   echo "<p class='incorrecta'>Correo o contraseña incorrecta</p>";
  }

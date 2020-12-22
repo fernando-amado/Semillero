@@ -20,7 +20,7 @@
 <h1>Iniciar Sesión </h1>
 <div class="formulario">
 <form action="#" method="POST">
-    <input type="email" class="form-control" placeholder="Ingrese Correo electronico" name="correo"><br>
+    <input type="email" class="form-control" placeholder="Ingrese Correo electrónico" name="correo"><br>
     <input type="password" class="form-control" placeholder="Ingrese Contraseña" name="contrasena"><br>
     <input type="submit" class="form-control  btn btn-primary" value="Iniciar Sesión" name="boton">
     <a href="../index.php" class="volver">Regresar</a>

@@ -34,7 +34,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="content">
   <div class="container">
     <div class="Title d-flex justify-content-between">
-      <h3 class="Titulopag">CAPITULOS</h3>
+      <h3 class="Titulopag">CAPÍTULOS</h3>
       <button class="buttonCrud" id="btnNuevo"  type="button" data-toggle="modal"> <i class="fas fa-plus-square" id="iagregar"></i> </button>
     </div>
 
@@ -44,7 +44,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <tr>
           <th scope="col">Id</th>
           <th scope="col">No. cap</th>
-          <th scope="col">Nombre capitulo</th>
+          <th scope="col">Nombre capítulo</th>
           <th scope="col">Acción</th>
         </tr>
       </thead>
