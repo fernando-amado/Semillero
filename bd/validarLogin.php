@@ -18,7 +18,7 @@ if (isset($_POST['boton'])) {
 $filas = mysqli_num_rows($resultado);
 
  if ($filas>0) {
-   header("location:GestionarCapitulos.php");
+   header("location:inicio.php");
  }else{
   echo "<p class='incorrecta'>Correo o contraseña incorrecta</p>";
  }

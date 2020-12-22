@@ -1,5 +1,3 @@
-
-<hr>
 <footer class="footer mt-auto py-3 " style="background-color: #000000;">
     <div class="row">
       <div class="container col-md-1">

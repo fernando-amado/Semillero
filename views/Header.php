@@ -13,6 +13,7 @@ if ($varsesion == null|| $varsesion='') {
     <img src="../assets/img/logo.png" height="70" width="150">
      <div class="d-flex">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a href="inicio.php"><input class="btn btn-outline-primary" type="button" value="Visualizar" id="BotonGestioCap"></a>
         <a href="GestionarCapitulos.php"><input class="btn btn-primary" type="button" value="Gestionar Capítulos" id="BotonGestioCap"></a>
           <a href="GestionarIndices.php"><input class="btn btn-primary" type="button" value="Gestionar Índices" id="BotonGestioCap"></a>
           
