@@ -88,23 +88,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <form id="formIndices" action="#">
           <div class="modal-body">
-<<<<<<< HEAD
-          <div class="form-group formulario__grupo" id="grupo__tituloCapitulo">
-              <label for="id_capitulo" class="col-form-label formulario__label">Capitulo:</label>
-              <div class="formulario__grupo">
-              <select class=" formulario__input" name="id_capitulo" id="id_capitulo">
-                <option value="1"></option>
-              </select>
-              <i class="formulario__validacion-estado fas fa-times-circle"></i>
-            </div>
-            <p class="formulario__input-error">El capitulo tiene que ser de 1 a 16 dígitos y solo puede contener numeros y puntos.</p>
-
-            </div>
-            <div class="form-group formulario__grupo" id="grupo__numeroIndices">
-              <label for="numero_ind" class="col-form-label formulario__label">Numero Indices:</label>
-              <div class="formulario__grupo">
-              <input type="number"  class=" formulario__input" name="numero_ind" id="numero_ind">
-=======
             <div class="form-group">
               <label for="id_capitulo" class="col-form-label">Capitulo:</label>
               <select class="form-control" id="id_capitulo">
@@ -120,20 +103,20 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               
               <label for="indice_id" class="col-form-label">Sub índices:</label>
               <select class="form-control" id="indice_id">
+              <option value="0">ÍNDICE</option>
               <?php
               $consulta2 = "SELECT * FROM indices";
               $resultado2 = $conexion->prepare($consulta2);
               $resultado2->execute();
               $data2 = $resultado2->fetchAll(PDO::FETCH_ASSOC); 
               foreach ($data2 as $dat2) {?>
-              <option value="<?php echo $dat2['id_indices']; ?>"><?php echo $dat2['numero_ind'];?></option>
+               <option value="<?php echo $dat2['id_indices']; ?>"><?php echo $dat2['numero_ind']." ".$dat2['nombre_ind'];?></option>
               <?php } ?>
               </select>
             </div>
             <div class="form-group">
               <label for="numero_ind" class="col-form-label">Numero Indices:</label>
               <input type="text" class="form-control" id="numero_ind">
->>>>>>> a0ce0d8d586bdd4e879fbba279571f232bc92ce5
             </div>
             <div class="form-group">
               <label for="nombre_ind" class="col-form-label">Nombre Indices:</label>

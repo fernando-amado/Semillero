@@ -70,7 +70,7 @@ function list_tree_cat_id($id){
 	echo "<ul>";
 	foreach ( $arrind as $key => &$value ){
 		add_levels( $arrind,$value["numero_cap"]."." );								
-		echo "<li ><a href='#$value[nombre_ind]'>$value[level]' $value[nombre_ind] " ." " ."</a></li>";
+		echo "<li ><a href='#$value[nombre_ind]'> $value[nombre_ind]...........$value[level] " ." " ."</a></li>";
 
 		if( array_key_exists( 'children', $value ) and is_array( $value[ 'children' ] )){						
 				draw_ordered( $value[ 'children' ] );

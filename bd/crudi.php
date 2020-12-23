@@ -15,15 +15,20 @@ $indice_id =(isset($_POST['indice_id'])) ? $_POST['indice_id'] : '';
 
 if($opcion==1){
      //alta
-        $consulta = "INSERT INTO indices (id_capitulo, numero_ind, nombre_ind, descripcion_ind,indice_id) VALUES('$id_capitulo', '$numero_ind', '$nombre_ind', '$descripcion_ind' , '$indice_id') ";			
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        if($resultado){
-            echo'<script> alert("Bien") </script>';
-        }
-
+     if ($indice_id=="0") {
+        $consulta = "INSERT INTO indices (id_capitulo, numero_ind, nombre_ind, descripcion_ind)
+        VALUES('$id_capitulo', '$numero_ind', '$nombre_ind', '$descripcion_ind') ";			
+       $resultado = $conexion->prepare($consulta);
+       $resultado->execute();
+        
+     }else{
+        $consulta = "INSERT INTO indices (id_capitulo, numero_ind, nombre_ind, descripcion_ind,indice_id)
+        VALUES('$id_capitulo', '$numero_ind', '$nombre_ind', '$descripcion_ind' , '$indice_id') ";			
+       $resultado = $conexion->prepare($consulta);
+       $resultado->execute();
+      }
          
-
+     
         $consulta = "SELECT id_indices, id_capitulo, numero_ind, nombre_ind, descripcion_ind,indice_id FROM indices ORDER BY id DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
