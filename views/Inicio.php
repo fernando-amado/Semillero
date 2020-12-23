@@ -20,17 +20,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<<<<<<< HEAD
-<?php 
-  include 'header.php'
-  ?>
-  <br>
-=======
   <?php 
   include 'header.php';
   include "../bd/Temario.php";
 ?>
->>>>>>> a0ce0d8d586bdd4e879fbba279571f232bc92ce5
   <center>
     <div class="content">
     <div class="card" style="width: 80rem;">
