@@ -18,7 +18,7 @@ if ($varsesion == null|| $varsesion='') {
         
     <nav class="navegacion">
 			<ul class="menu">
-				<li><a class="sesionNombre" href="#">Hola, julian moreno</a>
+				<li><a class="sesionNombre" href="#"><?php echo "Hola,".$_SESSION['correo']; ?></a>
 					<ul class="submenu">
           <li><a href="GestionarUsuarios.php">Gestionar usuarios</a></li>
 						<li><a href="GestionarCapitulos.php">Gestionar capitulos </a></li>
