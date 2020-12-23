@@ -127,11 +127,12 @@ validacion=$("#formIndices").submit(function(e){
     numero_ind = $.trim($("#numero_ind").val()); 
     nombre_ind = $.trim($("#nombre_ind").val());
     descripcion_ind = $.trim($("#descripcion_ind").val()); 
+    indice_id = $.trim($("#indice_id").val());
      $.ajax({
         url: "../bd/crudi.php",
         type: "POST",
         dataType: "json",
-        data: {id_capitulo:id_capitulo, numero_ind:numero_ind,nombre_ind:nombre_ind,descripcion_ind:descripcion_ind, id_indices:id_indices, opcion:opcion},
+        data: {id_capitulo:id_capitulo, numero_ind:numero_ind,nombre_ind:nombre_ind,descripcion_ind:descripcion_ind, id_indices:id_indices,indice_id:indice_id, opcion:opcion},
         success: function(data){  
             console.log(data);
             id_indices = data[0].id_indices;            
@@ -139,10 +140,11 @@ validacion=$("#formIndices").submit(function(e){
             numero_ind = data[0].numero_ind;
             nombre_ind = data[0].nombre_ind;
             descripcion_ind = data[0].descripcion_ind;
-            if(opcion == 1){tablaPersonas.row.add([id_indices,id_capitulo,numero_ind,nombre_ind,descripcion_ind]).draw();
+            indice_id = data[0].indice_id;
+            if(opcion == 1){tablaPersonas.row.add([id_indices,id_capitulo,numero_ind,nombre_ind,descripcion_ind,indice_id]).draw();
                   
             }
-            else{tablaPersonas.row(fila).data([id_indices,id_capitulo,numero_ind,nombre_ind,descripcion_ind]).draw();        
+            else{tablaPersonas.row(fila).data([id_indices,id_capitulo,numero_ind,nombre_ind,descripcion_ind,indice_id]).draw();        
             
             }            
         } 

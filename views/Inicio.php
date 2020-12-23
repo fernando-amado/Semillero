@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 include_once '../bd/conexion.php';
 $objeto = new Conexion();
@@ -10,6 +8,9 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <meta charset="UTF-8">
@@ -19,18 +20,27 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+<<<<<<< HEAD
 <?php 
   include 'header.php'
   ?>
   <br>
+=======
+  <?php 
+  include 'header.php';
+  include "../bd/Temario.php";
+?>
+>>>>>>> a0ce0d8d586bdd4e879fbba279571f232bc92ce5
   <center>
     <div class="content">
     <div class="card" style="width: 80rem;">
+    
     <?php
     $a=0;
      foreach($data as $dat) { 
+      
          $a++;
-         $consulta1 = "SELECT*FROM indices WHERE numero_ind LIKE '".$a."%'";
+         $consulta1 = "SELECT*FROM indices  WHERE id_capitulo = ".$dat['id_capitulo']." AND indice_id is  null ORDER BY numero_ind ASC ";
            $resultado1 = $conexion->prepare($consulta1);
            $resultado1->execute();
            $data1=$resultado1->fetchAll(PDO::FETCH_ASSOC);
@@ -41,11 +51,14 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
      <h4>Tabla de contenido del capítulo</h4>
      
      <div class="tablaContenido">
-       <ul>
+     <ul>
        <?php
        foreach($data1 as $dat1){
       ?>
          <li><a href="#<?php echo $dat1['numero_ind']; ?>"><?php echo $dat1['nombre_ind']; ?>........<?php echo $dat1['numero_ind']; ?></a></li>
+         <?php
+          list_tree_cat_id($dat1["id_indices"]);
+          ?>
          <?php
        }
       ?>
@@ -59,6 +72,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
       <h5 class="contenidoCap" id="<?php echo $dat1['numero_ind']?>"><?php echo $dat1['numero_ind']; ?>) <?php echo $dat1['nombre_ind']; ?></h5>
       <p class="contenidoCap"><?php echo $dat1['descripcion_ind']; ?></p>
       <?php
+      list_tree_description($dat1["id_indices"]);
        }
       ?>
 

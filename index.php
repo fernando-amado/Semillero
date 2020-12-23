@@ -35,16 +35,18 @@
     ?>
     <div class="content">
     <div class="card" style="width: 80rem;">
-    <?php 
-    foreach($data as $dat) { 
-           $consulta1 = "SELECT*FROM indices WHERE numero_ind LIKE '".$dat['numero_cap']."%'";
+    <?php
+    $a=0;
+     foreach($data as $dat) { 
+      
+         $a++;
+         $consulta1 = "SELECT*FROM indices WHERE id_capitulo = ".$dat['id_capitulo']." ORDER BY numero_ind ASC";
            $resultado1 = $conexion->prepare($consulta1);
            $resultado1->execute();
            $data1=$resultado1->fetchAll(PDO::FETCH_ASSOC);
-           
           ?>
    <details>
-     <summary><?php echo 'Capítulo ', $dat['numero_cap']; ?> </summary>
+     <summary><?php echo 'Capítulo ', $a;?> </summary>
      <h3 class="nombreCap"><?php echo $dat['nombre_cap']; ?></h3><br>
      <h4>Tabla de contenido del capítulo</h4>
      

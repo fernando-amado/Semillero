@@ -89,7 +89,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <input type="text" class=" formulario__input" name="numeroCapitulo" id="numeroCapitulo">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </div>
-              <p class="formulario__input-error">El capitulo tiene que ser de 1 a 16 dígitos y solo puede contener numeros y puntos.</p>
+              <p class="formulario__input-error">El capitulo tiene que ser de 1 a 16 dígitos solo puede contener numeros</p>
 
             </div>
 
@@ -99,7 +99,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               <input type="text" class=" formulario__input" name="tituloCapitulo" id="tituloCapitulo">
               <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </div>
-              <p class="formulario__input-error">El nombre del capitulo tiene que ser mayor a 1.</p>
+              <p class="formulario__input-error">Campo obligatorio</p>
             </div>
 
             <div class="formulario__mensaje" id="formulario__mensaje">
