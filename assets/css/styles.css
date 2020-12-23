@@ -90,7 +90,6 @@ a{
 a:hover{
     text-decoration: underline;
 }
-<<<<<<< HEAD
 
 
 .navegacion ul{
@@ -123,8 +122,7 @@ a:hover{
 	position: absolute;
 	background: #333333;
     width: 100%;
-  padding-top: 17px;
-  padding-bottom: 17px;
+  
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 1.5s;
@@ -142,8 +140,4 @@ a:hover{
 .menu li:hover .submenu{
 	visibility: visible;
 	opacity: 1;
-=======
-.table{
-    width: 100%;
->>>>>>> a0ce0d8d586bdd4e879fbba279571f232bc92ce5
 }

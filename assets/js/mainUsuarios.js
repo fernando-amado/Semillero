@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    tablaCapitulos = $("#tablaCapitulos").DataTable({
+    tablaUsuarios = $("#tablaUsuarios").DataTable({
        "columnDefs":[{
         "targets": -1,
         "data":null,
@@ -25,10 +25,10 @@ $(document).ready(function(){
     });
     
 $("#btnNuevo").click(function(){
-    $("#formCapitulos").trigger("reset");
+    $("#formUsuarios").trigger("reset");
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Nuevo Capitulo");            
+    $(".modal-title").text("Nuevo usuario");            
     $("#modalCRUD").modal("show");        
     id=null;
     opcion = 1; //Agregar
@@ -41,18 +41,22 @@ var fila; //capturar la fila para editar o borrar el registro
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
     id = parseInt(fila.find('th:eq(0)').text());
-    numeroCapitulo= fila.find('td:eq(0)').text();
-    tituloCapitulo = fila.find('td:eq(1)').text();
+    nombre= fila.find('td:eq(0)').text();
+    apellido = fila.find('td:eq(1)').text();
+    correo = fila.find('td:eq(2)').text();
+    contrasena = fila.find('td:eq(3)').text();
     
     
     
-    $("#tituloCapitulo").val(tituloCapitulo);
-    $("#numeroCapitulo").val(numeroCapitulo);
+    $("#nombre").val(nombre);
+    $("#apellido").val(apellido);
+    $("#correo").val(correo);
+    $("#contrasena").val(contrasena);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Editar Capitulo");            
+    $(".modal-title").text("Editar Usuario");            
     $("#modalCRUD").modal("show");  
      
     
@@ -63,11 +67,11 @@ validacionBorrar=$(document).on("click", ".btnBorrar", function(){
     fila = $(this);
     id = parseInt($(this).closest("tr").find('th:eq(0)').text());
 
-    tituloCapitulo = String($(this).closest("tr").find('td:eq(1)').text());
+    nombre = String($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
     swal.fire({
-        title: '¿Está seguro de borrar el capitulo '+tituloCapitulo+'?',
-        text: "¡Si no lo está puede cancelar la accíón!",
+        title: '¿Está seguro de borrar el usuario '+nombre+'?',
+        text: "¡Si no lo está, puede cancelar la accíón!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -93,9 +97,9 @@ validacionBorrar=$(document).on("click", ".btnBorrar", function(){
             if(validacion=!null){
                 Swal.fire({
                     icon: "success",
-                    title: "El Capitulo ha sido borrado correctamente",
+                    title: "El usuario ha sido borrado correctamente",
                     showConfirmButton: false,   
-                    html: '<a href="../views/GestionarCapitulos.php"><button  class="btn btn-primary">Aceptar</button><a/>',
+                    html: '<a href="../views/GestionarUsuarios.php"><button  class="btn btn-primary">Aceptar</button><a/>',
                     allowOutsideClick: false
                 })
                  
@@ -114,28 +118,37 @@ validacionBorrar=$(document).on("click", ".btnBorrar", function(){
 
 //VALIDACIONES FORMULARIOS
 
-const formulario = document.getElementById('formCapitulos');
-const inputs = document.querySelectorAll('#formCapitulos input');
+const formulario = document.getElementById('formUsuarios');
+const inputs = document.querySelectorAll('#formUsuarios input');
 
 const expresiones = {
 	
-	tituloCapitulo: /^[a-zA-ZÀ-ÿ-,-.\s]{1,1000}$/, // Letras y espacios, pueden llevar acentos.
-	
-	numeroCapitulo: /^[.\d]{1,14}$/ // numeros.
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	contrasena: /^[a-zA-ZÀ-ÿ0-9\s]{4,16}$/, // 4 a 12 digitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 }
 const campos = {
-	numeroCapitulo: false,
-	tituloCapitulo: false
+	nombre: false,
+    apellido: false,
+    correo: false,
+    contrasena: false
 	
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "numeroCapitulo":
-			validarCampo(expresiones.numeroCapitulo, e.target,'numeroCapitulo');
+		case "nombre":
+			validarCampo(expresiones.nombre, e.target,'nombre');
 		break;
-		case "tituloCapitulo":
-			validarCampo(expresiones.tituloCapitulo, e.target, 'tituloCapitulo');
+		case "apellido":
+			validarCampo(expresiones.apellido, e.target, 'apellido');
+        break;
+        case "correo":
+			validarCampo(expresiones.correo, e.target, 'correo');
+        break;
+        case "contrasena":
+			validarCampo(expresiones.apellido, e.target, 'contrasena');
 		break;
 		
 	}
@@ -164,36 +177,40 @@ inputs.forEach((input) => {
 });
 
 
-$("#formCapitulos").submit(function(e){
+$("#formUsuarios").submit(function(e){
 
     const terminos = document.getElementById('terminos');
-	if(campos.tituloCapitulo && campos.numeroCapitulo  ){
+	if(campos.nombre && campos.apellido && campos.correo && campos.contrasena  ){
 		
-        tituloCapitulo = $.trim($("#tituloCapitulo").val());
-        numeroCapitulo = $.trim($("#numeroCapitulo").val());  
+        nombre = $.trim($("#nombre").val());
+        apellido = $.trim($("#apellido").val());  
+        correo = $.trim($("#correo").val());
+        contrasena = $.trim($("#contrasena").val());
          $.ajax({
-            url: "../bd/crud.php",
+            url: "../bd/crudUsuarios.php",
             type: "POST",
             dataType: "json",
-            data: {tituloCapitulo:tituloCapitulo, numeroCapitulo:numeroCapitulo,  id:id, opcion:opcion},
+            data: {nombre:nombre, apellido:apellido,correo:correo,contrasena:contrasena,  id:id, opcion:opcion},
             success: function(data){  
                 console.log(data);
                 id = data[0].id;            
-                tituloCapitulo = data[0].tituloCapitulo;
-                numeroCapitulo = data[0].numeroCapitulo;
-                if(opcion == 1){tablaPersonas.row.add([id,tituloCapitulo,numeroCapitulo]).draw();
+                nombre = data[0].nombre;
+                apellido= data[0].apellido;
+                correo= data[0].correo;
+                contrasena= data[0].contrasena;
+                if(opcion == 1){tablaPersonas.row.add([id,nombre,apellido,correo,contrasena]).draw();
                       
                 }
-                else{tablaPersonas.row(fila).data([id,tituloCapitulo,numeroCapitulo]).draw();        
+                else{tablaPersonas.row(fila).data([id,nombre,apellido,correo,contrasena]).draw();        
                 
                 }            
             } 
         });
         Swal.fire({
             icon: "success",
-            title: "¡El capitulo ha sido guardado correctamente!",     
+            title: "¡El usuario ha sido guardado correctamente!",     
             showConfirmButton: false,   
-            html: '<a href="../views/GestionarCapitulos.php"><button  class="btn btn-primary">Aceptar</button><a/>',
+            html: '<a href="../views/GestionarUsuarios.php"><button  class="btn btn-primary">Aceptar</button><a/>',
             allowOutsideClick: false
         })
         e.preventDefault(); 

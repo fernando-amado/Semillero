@@ -24,7 +24,7 @@ if($opcion==1){
 
          
 
-        $consulta = "SELECT id_indices, id_capitulo, numero_ind, nombre_ind, descripcion_ind,indice_id FROM indices ORDER BY id DESC LIMIT 1";
+        $consulta = "SELECT id_indices, id_capitulo, numero_ind, nombre_ind, descripcion_ind,indice_id FROM indices ORDER BY id_indices DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +53,3 @@ if($opcion==1){
 print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
 $conexion = NULL;
 ?>
-
-
-
-

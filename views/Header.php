@@ -20,8 +20,9 @@ if ($varsesion == null|| $varsesion='') {
 			<ul class="menu">
 				<li><a class="sesionNombre" href="#">Hola, julian moreno</a>
 					<ul class="submenu">
-						<li><a href="GestionarCapitulos.php">Gestionar Capitulos </a></li>
-						<li><a href="GestionarIndices.php">Gestionar indices</a></li>
+          <li><a href="GestionarUsuarios.php">Gestionar usuarios</a></li>
+						<li><a href="GestionarCapitulos.php">Gestionar capitulos </a></li>
+						<li><a href="GestionarIndices.php">Gestionar índices</a></li>
 						<li><a href="../bd/cerrarSesion.php">Cerrar sesión</a></li>
 					</ul>
 				</li>
@@ -31,5 +32,6 @@ if ($varsesion == null|| $varsesion='') {
   </nav>
   </div>
     </div>
+  <br>
   <br>
   <br>
