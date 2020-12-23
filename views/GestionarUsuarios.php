@@ -5,7 +5,7 @@ include_once '../bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT id_capitulo, numero_cap, nombre_cap FROM capitulos";
+$consulta = "SELECT id_usuario, nombre, apellido,correo,contrasena FROM usuarios";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -14,7 +14,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestionar Capítulos</title>
+  <title>Gestionar Usuarios</title>
   <link rel="stylesheet" href="../assets/css/styles.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
@@ -36,17 +36,20 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
   <div class="content">
     <div class="container">
       <div class="Title d-flex justify-content-between">
-        <h3 class="Titulopag">CAPITULOS</h3>
+        <h3 class="Titulopag">Usuarios</h3>
         <button class="buttonCrud" id="btnNuevo" type="button" data-toggle="modal"> <i class="fas fa-plus-square" id="iagregar"></i> </button>
       </div>
 
-      <table id="tablaCapitulos" class="table">
+      <table id="tablaUsuarios" class="table">
 
         <thead class="text-center">
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">No. cap</th>
-            <th scope="col">Nombre capitulo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Contraseña</th>
+            
             <th scope="col">Acción</th>
           </tr>
         </thead>
@@ -56,9 +59,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           foreach ($data as $dat) {
           ?>
             <tr>
-              <th scope="row"><?php echo $dat['id_capitulo'] ?></th>
-              <td><?php echo $dat['numero_cap'] ?></td>
-              <td><?php echo $dat['nombre_cap'] ?></td>
+              <th scope="row"><?php echo $dat['id_usuario'] ?></th>
+              <td><?php echo $dat['nombre'] ?></td>
+              <td><?php echo $dat['apellido'] ?></td>
+              <td><?php echo $dat['correo'] ?></td>
+              <td><?php echo $dat['contrasena'] ?></td>
               <td>
               </td>
             </tr>
@@ -81,25 +86,42 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="formCapitulos" action="#">
+        <form id="formUsuarios" action="#">
           <div class="modal-body">
-            <div class="form-group formulario__grupo" id="grupo__numeroCapitulo">
-              <label for="numeroCapitulo" class="col-form-label formulario__label ">Numero Capitulo</label>
+            <div class="form-group formulario__grupo" id="grupo__nombre">
+              <label for="nombre" class="col-form-label formulario__label ">Nombre</label>
               <div class="formulario__grupo">
-                <input type="text" class=" formulario__input" name="numeroCapitulo" id="numeroCapitulo">
+                <input type="text" class=" formulario__input" name="nombre" id="nombre">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </div>
-              <p class="formulario__input-error">El capitulo tiene que ser de 1 a 16 dígitos solo puede contener numeros</p>
+              <p class="formulario__input-error">El nombre tiene que ser de 1 a 16 dígitos solo puede contener numeros</p>
 
             </div>
 
-            <div class="form-group formulario__grupo" id="grupo__tituloCapitulo">
-              <label for="tituloCapitulo" class="col-form-label formulario__label">Nombre Capitulo:</label>
+            <div class="form-group formulario__grupo" id="grupo__apellido">
+              <label for="apellido" class="col-form-label formulario__label">Apellido:</label>
               <div class="formulario__grupo">
-              <input type="text" class=" formulario__input" name="tituloCapitulo" id="tituloCapitulo">
+              <input type="text" class=" formulario__input" name="apellido" id="apellido">
               <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </div>
-              <p class="formulario__input-error">El nombre del capitulo no debe contener numeros</p>
+              <p class="formulario__input-error">El apellido no debe contener numeros</p>
+            </div>
+            <div class="form-group formulario__grupo" id="grupo__correo">
+              <label for="correo" class="col-form-label formulario__label">Correo:</label>
+              <div class="formulario__grupo">
+              <input type="text" class=" formulario__input" name="correo" id="correo">
+              <i class="formulario__validacion-estado fas fa-times-circle"></i>
+              </div>
+              <p class="formulario__input-error">El correo no coincide</p>
+            </div>
+
+            <div class="form-group formulario__grupo" id="grupo__contrasena">
+              <label for="contrasena" class="col-form-label formulario__label">Contraseña:</label>
+              <div class="formulario__grupo">
+              <input type="password" class=" formulario__input" name="contrasena" id="contrasena">
+              <i class="formulario__validacion-estado fas fa-times-circle"></i>
+              </div>
+              <p class="formulario__input-error">La contraseña no es valida</p>
             </div>
 
             <div class="formulario__mensaje" id="formulario__mensaje">
@@ -127,7 +149,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- datatables JS -->
   <script type="text/javascript" src="../librerias/datatables/datatables.min.js"></script>
-  <script type="text/javascript" src="../assets/js/main.js"></script>
+  <script type="text/javascript" src="../assets/js/mainUsuarios.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   
 

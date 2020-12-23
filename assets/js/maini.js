@@ -117,10 +117,68 @@ validacionBorrar=$(document).on("click", ".btnBorrar", function(){
     
 
 
+//VALIDACIONES FORMULARIOS
+
+const formulario = document.getElementById('formIndices');
+const inputs = document.querySelectorAll('#formIndices input');
+
+const expresiones = {
+	
+	
+
+    numero_ind: /^[.\d]{1,14}$/, // numeros.
+    nombre_ind: /^[a-zA-ZÀ-ÿ-,-.\s]{1,1000}$/, // Letras y espacios, pueden llevar acentos.
+    
+}
+const campos = {
+    
+    numero_ind:false,
+    nombre_ind: false,
+	
+	
+}
+
+const validarFormulario = (e) => {
+	switch (e.target.name) {
+		case "numero_ind":
+			validarCampo(expresiones.numero_ind, e.target,'numero_ind');
+		break;
+		case "nombre_ind":
+			validarCampo(expresiones.nombre_ind, e.target, 'nombre_ind');
+        break;
+    
+		
+	}
+}
+const validarCampo = (expresion, input, campo) => {
+	if(expresion.test(input.value)){
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+		campos[campo] = false;
+	}
+}
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
 
     
 validacion=$("#formIndices").submit(function(e){
 
+    const terminos = document.getElementById('terminos');
+	if(campos.numero_ind && campos.nombre_ind   ){
+		
      
     
     id_capitulo = $.trim($("#id_capitulo").val());
@@ -151,8 +209,7 @@ validacion=$("#formIndices").submit(function(e){
     });
     
     
-    
-    if(validacion!=null){
+
         Swal.fire({
             icon: "success",
             title: "¡El indice ha sido guardado correctamente!",     
@@ -162,9 +219,10 @@ validacion=$("#formIndices").submit(function(e){
         })
         e.preventDefault();  
     }
-    else{
-        alert("mal");
-    }
+    else {
+		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+	}
+    
     
 
    
