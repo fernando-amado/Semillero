@@ -14,10 +14,22 @@ if ($varsesion == null|| $varsesion='') {
      <div class="d-flex">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a href="inicio.php"><input class="btn btn-outline-primary" type="button" value="Visualizar" id="BotonGestioCap"></a>
-        <a href="GestionarCapitulos.php"><input class="btn btn-primary" type="button" value="Gestionar Capítulos" id="BotonGestioCap"></a>
-          <a href="GestionarIndices.php"><input class="btn btn-primary" type="button" value="Gestionar Índices" id="BotonGestioCap"></a>
-          
-        </div>
-    </div>
+       
+        
+    <nav class="navegacion">
+			<ul class="menu">
+				<li><a class="sesionNombre" href="#">Hola, julian moreno</a>
+					<ul class="submenu">
+						<li><a href="GestionarCapitulos.php">Gestionar Capitulos </a></li>
+						<li><a href="GestionarIndices.php">Gestionar indices</a></li>
+						<li><a href="../bd/cerrarSesion.php">Cerrar sesión</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+		</nav>
   </nav>
+  </div>
+    </div>
+  <br>
   <br>

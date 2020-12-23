@@ -43,22 +43,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         <thead class="text-center">
           <tr>
-<<<<<<< HEAD
             <th scope="col">Id</th>
             <th scope="col">Capitulo</th>
             <th scope="col">Numero del Índice</th>
             <th scope="col">Nombre del Índice</th>
             <th scope="col">Descripción</th>
             <th scope="col">Acción</th>
-=======
-            <th scope="row"><?php echo $dat['id_indices'] ?></th>
-            <td><?php echo $dat['id_capitulo'] ?></td>
-            <td><?php echo $dat['numero_ind'] ?></td>
-            <td><?php echo $dat['nombre_ind'] ?></td>
-            <td><?php echo $dat['descripcion_ind'] ?></td>
-            
-            <td></td>
->>>>>>> 7c97f03d552696a43a0a028abb25d10429c3c649
           </tr>
         </thead>
 
@@ -95,38 +85,21 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <form id="formIndices" action="#">
           <div class="modal-body">
-            <div class="form-group">
-              <label for="id_capitulo" class="col-form-label">Capitulo:</label>
-              <input type="text" class="form-control" id="id_capitulo">
+          <div class="form-group formulario__grupo" id="grupo__tituloCapitulo">
+              <label for="id_capitulo" class="col-form-label formulario__label">Capitulo:</label>
+              <div class="formulario__grupo">
+              <select class=" formulario__input" name="id_capitulo" id="id_capitulo">
+                <option value="1"></option>
+              </select>
+              <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-<<<<<<< HEAD
-            <div class="form-group">
-              <label for="numero_ind" class="col-form-label">Numero Indices:</label>
-              <input type="number" class="form-control" id="numero_ind">
-=======
-        <form id="formIndices" action="#">    
-            <div class="modal-body">
-               
-            
+            <p class="formulario__input-error">El capitulo tiene que ser de 1 a 16 dígitos y solo puede contener numeros y puntos.</p>
 
-                <div class="form-group">
-                <label for="id_capitulo" class="col-form-label">Capitulo:</label>
-                <input type="text" class="form-control" id="id_capitulo">
-                </div>  
-                <div class="form-group">
-                <label for="numero_ind" class="col-form-label">Numero Indices:</label>
-                <input type="text" class="form-control" id="numero_ind">
-                </div>  
-                <div class="form-group">
-                <label for="nombre_ind" class="col-form-label">Nombre Indices:</label>
-                <input type="text" class="form-control" id="nombre_ind">
-                </div>  
-                <div class="form-group">
-                <label for="descripcion_ind" class="col-form-label">Descripcion Indices:</label>
-                <input type="text" class="form-control" id="descripcion_ind">
-                </div>  
-                                    
->>>>>>> 7c97f03d552696a43a0a028abb25d10429c3c649
+            </div>
+            <div class="form-group formulario__grupo" id="grupo__numeroIndices">
+              <label for="numero_ind" class="col-form-label formulario__label">Numero Indices:</label>
+              <div class="formulario__grupo">
+              <input type="number"  class=" formulario__input" name="numero_ind" id="numero_ind">
             </div>
             <div class="form-group">
               <label for="nombre_ind" class="col-form-label">Nombre Indices:</label>

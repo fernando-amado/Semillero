@@ -22,6 +22,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 <?php 
   include 'header.php'
   ?>
+  <br>
   <center>
     <div class="content">
     <div class="card" style="width: 80rem;">

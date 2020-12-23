@@ -90,3 +90,55 @@ a{
 a:hover{
     text-decoration: underline;
 }
+
+
+.navegacion ul{
+	list-style: none;
+}
+
+.menu > li{
+	position: relative;
+	display: inline-block;
+}
+
+.menu > li > a{
+	display: block;
+	padding:25px 20px;
+	color: #ffffff;
+	font-family: 'Open sans';
+    text-decoration: none;
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+.menu li a:hover{
+	color: #007bff;
+	transition: all .3s;
+}
+
+/* Submenu*/
+
+.submenu{
+	position: absolute;
+	background: #333333;
+    width: 100%;
+  padding-top: 17px;
+  padding-bottom: 17px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1.5s;
+}
+
+.submenu li a{
+    position: relative;
+    text-align: center;
+    margin: -25px;
+	color: #fff;
+	font-family: 'Open sans';
+	text-decoration: none;
+}
+
+.menu li:hover .submenu{
+	visibility: visible;
+	opacity: 1;
+}

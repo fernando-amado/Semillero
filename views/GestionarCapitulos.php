@@ -33,7 +33,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
   <?php
   include 'header.php'
   ?>
-<<<<<<< HEAD
   <div class="content">
     <div class="container">
       <div class="Title d-flex justify-content-between">
@@ -44,30 +43,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <table id="tablaCapitulos" class="table">
 
         <thead class="text-center">
-=======
-<div class="content">
-  <div class="container">
-    <div class="Title d-flex justify-content-between">
-      <h3 class="Titulopag">CAPÍTULOS</h3>
-      <button class="buttonCrud" id="btnNuevo"  type="button" data-toggle="modal"> <i class="fas fa-plus-square" id="iagregar"></i> </button>
-    </div>
-
-    <table id="tablaCapitulos" class="table">
-
-      <thead class="text-center">
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">No. cap</th>
-          <th scope="col">Nombre capítulo</th>
-          <th scope="col">Acción</th>
-        </tr>
-      </thead>
-
-      <tbody class="text-center">
-      <?php
-      foreach($data as $dat) {                                                        
-      ?>
->>>>>>> c5b373523d6c8b1d836bf02e842236d55222fa72
           <tr>
             <th scope="col">Id</th>
             <th scope="col">No. cap</th>
@@ -108,9 +83,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <form id="formCapitulos" action="#">
           <div class="modal-body">
-
-
-
             <div class="form-group formulario__grupo" id="grupo__numeroCapitulo">
               <label for="numeroCapitulo" class="col-form-label formulario__label ">Numero Capitulo</label>
               <div class="formulario__grupo">
